@@ -57,8 +57,8 @@ While coding you'd run `npm run dev`, and to create production ready zip files `
 
 Tags are replaced during dev, build & production mode. These are helpful for a when free & pro versions have
 
-In your `wp-plugins.config.js` you'll set the plugins name and more information. Most of these fields can be called within your `/src` by writing `XPLUGIN_`.
-3
+In your `wp-plugins.config.js` you'll set the plugins name and more information. Most of these fields can be called within your `src` by writing `XPLUGIN_`.
+
 - `XPLUGIN_NAME`
 - `XPLUGIN_SLUG`
 - `XPLUGIN_VERSION`
@@ -89,12 +89,12 @@ $text = "This section will be in the free plugin.";
 
 The scripted are handled by the official WordPress scripts. This greatly streamlines the amount of code and configuration we need to do.
 
-The script entry and output paths are configured in the `wp-plugins.build.js` per plugin. You will still need to enqueue the compiled scripts within your code.
+The script entry and output paths are configured in the `wp-plugins.config.js` per plugin. You will still need to enqueue the compiled scripts within your code.
 
 See [morganhvidt/find-my-blocks](https://github.com/morganhvidt/find-my-blocks) for a live example.
 
 ## Wishlist
 
-[] Make available as NPM package.
-[] Automatic translation file generation during production build. 
+- [ ] Make available as NPM package.
+- [ ] Automatic translation file generation during production build. 
 
