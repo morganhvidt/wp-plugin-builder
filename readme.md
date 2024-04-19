@@ -1,5 +1,7 @@
 # Morgan's WordPress Plugin Builder
 
+<img src="https://github.com/morganhvidt/wp-plugin-builder/assets/10958823/fc3d1eec-5b98-494e-b768-bb4c568aa3c7" width="150">
+
 I'm open sourcing my **WordPress Plugin Builder** scripts for all to use and help extend.
 
 - Build standalone or freemium WordPress plugins in **one codebase**.
@@ -12,6 +14,12 @@ I'm open sourcing my **WordPress Plugin Builder** scripts for all to use and hel
 - Built for MacOS (Untested on Windows)
 
 Let's speed up WordPress plugin development! Don't forget to say hi on twitter/X[@morganhvidt](https://x.com/morganhvidt)
+
+
+
+https://github.com/morganhvidt/wp-plugin-builder/assets/10958823/a99ca105-620d-42a4-be8c-81eecca13214
+
+
 
 ## Why did I build this?
 
