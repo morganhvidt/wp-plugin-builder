@@ -1,6 +1,17 @@
-# Morgan's WordPress Plugin Builder
 
-<img src="https://github.com/morganhvidt/wp-plugin-builder/assets/10958823/fc3d1eec-5b98-494e-b768-bb4c568aa3c7" width="150">
+<h1 align="center">
+Morgan's WordPress Plugin Builder
+</h1>
+<p align="center">
+<img src="https://github.com/morganhvidt/wp-plugin-builder/assets/10958823/fc3d1eec-5b98-494e-b768-bb4c568aa3c7" width="200">
+</p>
+
+<p align="center">
+✨ <a href="https://x.com/morganhvidt"> @morganhvidt Twitter / X</a>&nbsp | <a href="https://morganhvidt.com/"> morganhvidt.com</a>&nbsp
+</p>
+<br>
+
+---
 
 I'm open sourcing my **WordPress Plugin Builder** scripts for all to use and help extend.
 
@@ -13,7 +24,7 @@ I'm open sourcing my **WordPress Plugin Builder** scripts for all to use and hel
 - **Production Mode** for building assets and zip files automatically.
 - Built for MacOS (Untested on Windows)
 
-Let's speed up WordPress plugin development! Don't forget to say hi on twitter/X[@morganhvidt](https://x.com/morganhvidt)
+Let's speed up WordPress plugin development! Don't forget to say hi on twitter/X [@morganhvidt](https://x.com/morganhvidt)
 
 
 
