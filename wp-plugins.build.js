@@ -54,6 +54,12 @@ async function start(mode = "build") {
 						console.log(`📦 Minifying Files: ${pluginConfig.slug}`);
 						await minifyFiles(pluginConfig);
 					}
+
+					// Only generate translations after all files are copied and processed
+					if (pluginConfig.translation) {
+						console.log(`📝 Generating Translations: ${pluginConfig.slug}`);
+						await generateTranslations(pluginConfig);
+					}
 				}
 
 				if (arg === "production") {
@@ -81,7 +87,7 @@ let timeoutIds = {};
 function watchPlugin(plugin) {
 	const sourceFolder = plugin.sourceFolder || "src";
 	const productionFolder =
-		plugin.productionFolder || `production/plugins/${plugin.slug}`;
+		plugin.productionFolder || `production/${plugin.slug}`;
 
 	watcher = fs.watch(
 		sourceFolder,
@@ -107,7 +113,7 @@ function watchPlugin(plugin) {
 			// Set a new timeout
 			timeoutIds[plugin.slug] = setTimeout(async () => {
 				try {
-					console.log(`🔄 Updating ${filename} in ${plugin.slug}`);
+					console.log(`🔄 Processing ${filename} in ${plugin.slug}`);
 					await copyFilesAndFolders(
 						sourceFolder,
 						productionFolder,
@@ -115,18 +121,6 @@ function watchPlugin(plugin) {
 						replacements(plugin),
 						plugin,
 					);
-
-					// Get the extension of the file
-					const ext = path.extname(filename);
-
-					// Handle both JS and CSS files
-					if (ext === ".js" || ext === ".jsx") {
-						console.log(`🔄 Updating scripts in ${plugin.slug}`);
-						await compileJS(plugin, "development");
-					} else if (ext === ".css" && plugin.minify) {
-						console.log(`🔄 Minifying CSS in ${plugin.slug}`);
-						await minifyFiles(plugin);
-					}
 				} catch (err) {
 					console.error(
 						`🤬 Error updating ${filename} in ${plugin.slug}:`,
@@ -473,6 +467,63 @@ async function minifyFiles(currentPlugin) {
 	});
 
 	return Promise.all(promises);
+}
+
+async function generateTranslations(plugin) {
+	if (!plugin.translation) return;
+
+	const textDomain = plugin.translation.text_domain || plugin.text_domain;
+	const input = plugin.translation.input;
+	const output = plugin.translation.output;
+
+	try {
+		// Use spawn to run the CLI command with npm
+		const makePotProcess = spawn(
+			"npm",
+			[
+				"exec",
+				"@wp-blocks/make-pot",
+				input, // source directory
+				output, // destination
+				"--domain",
+				textDomain,
+				"--package-name",
+				plugin.name,
+				"--slug",
+				plugin.slug,
+				"--location",
+				"--silent", // Add silent flag to reduce noise
+			],
+			{
+				stdio: ["ignore", "pipe", "pipe"], // Change to pipe to control output
+				shell: true,
+			},
+		);
+
+		await new Promise((resolve, reject) => {
+			// Capture output if needed
+			let output = "";
+			makePotProcess.stdout?.on("data", (data) => {
+				output += data;
+			});
+
+			makePotProcess.on("close", (code) => {
+				if (code === 0) {
+					console.log(`📝 Generated translations for ${plugin.slug}`);
+					resolve();
+				} else {
+					reject(new Error(`make-pot process exited with code ${code}`));
+				}
+			});
+
+			makePotProcess.on("error", (err) => {
+				reject(err);
+			});
+		});
+	} catch (error) {
+		console.error(`Error generating translations for ${plugin.slug}:`, error);
+		console.error(error.stack);
+	}
 }
 
 /**

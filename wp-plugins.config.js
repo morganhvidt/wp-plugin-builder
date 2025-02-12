@@ -1,7 +1,7 @@
 /**
  * Morgan Hvidt's WordPress Plugin Builder config file.
  *
- * @version 1.0
+ * @version 1.1
  *
  * @source Documentation and more info on https://morganhvidt.com/wordpress-plugin-builder
  * @author @morganhvidt on https://x.com/morganhvidt
@@ -30,6 +30,11 @@ const WP_PLUGINS = [
 			},
 		],
 		minify: [], // Allows minifying files without building them as react.
+		translation: {
+			text_domain: "find-my-blocks",
+			input: "production/find-my-blocks", // Use a production build for creating translations.
+			output: "src/languages", // Output to the src folder for git access.
+		},
 	},
 ];
 
