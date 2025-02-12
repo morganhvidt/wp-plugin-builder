@@ -1,23 +1,20 @@
 {
-  "private": true,
-  "name": "morgan-plugin",
-  "version": "1.0.0",
+  "name": "morgan-x-plugin",
+  "title": "Morgan X Plugin Development",
+  "description": "WordPress Plugin Development simplified with Morgan's plugins.build.js & plugins.config.js",
+  "version": "1.0.1",
   "license": "GPL-2.0",
   "type": "module",
+  "author": "Morgan Hvidt <https://morganhvidt.com/>",
+  "private": true,
   "scripts": {
     "dev": "node wp-plugins.build.js dev",
     "build": "node wp-plugins.build.js build",
-    "production": "node wp-plugins.build.js production",
-    "postinstall": "composer install"
-  },
-  "dependencies": {
-    "@wordpress/scripts": "^27.6.0"
+    "production": "node wp-plugins.build.js production"
   },
   "devDependencies": {
-    "@eslint/js": "^9.0.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.1",
-    "prettier": "^3.2.5",
-    "prettier-eslint": "^16.3.0"
-  }
+    "@biomejs/biome": "1.9.4",
+    "esbuild": "^0.25.0"
+  },
+  "dependencies": {}
 }
