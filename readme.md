@@ -112,6 +112,58 @@ The script entry and output paths are configured in the `wp-plugins.config.js` p
 
 See [morganhvidt/find-my-blocks](https://github.com/morganhvidt/find-my-blocks) for a live example.
 
+## CSS Minification & File Processing
+
+The build process includes a powerful minify feature that allows you to process CSS files and other assets with custom input/output paths. This is particularly useful for organizing assets in your production builds.
+
+### Basic Minify Configuration
+
+In your `wp-plugins.config.js`, you can configure the minify array to specify which files should be processed and where they should be output:
+
+```javascript
+minify: [
+  {
+    entry: 'src/admin/gallery-videos.css',
+    output: './production/product-videos-for-woocommerce/admin/gallery-videos.css',
+  },
+  {
+    entry: 'src/gallery/gallery-videos.css',
+    output: './production/product-videos-for-woocommerce/gallery/gallery-videos.css',
+  },
+]
+```
+
+### How Minify Works
+
+- **Custom Paths**: Unlike the standard file copying, minify allows you to override the default output structure
+- **File Processing**: CSS files are minified and optimized during the build process
+- **Directory Creation**: Output directories are automatically created if they don't exist
+- **Multiple Targets**: You can specify different output paths for the same source file across different plugin versions
+
+### Advanced Examples
+
+```javascript
+minify: [
+  // Admin styles
+  {
+    entry: 'src/admin/styles/main.css',
+    output: './production/my-plugin-free/assets/admin.css',
+  },
+  // Frontend gallery styles
+  {
+    entry: 'src/frontend/gallery/styles.css',
+    output: './production/my-plugin-free/public/gallery.css',
+  },
+  // Premium-specific styles
+  {
+    entry: 'src/premium/advanced-features.css',
+    output: './production/my-plugin-pro/assets/premium.css',
+  },
+]
+```
+
+**🔥 HOT TIP**: Use the minify feature to reorganize your asset structure for cleaner production builds, especially when you need different folder structures than your source code.
+
 ## Wishlist
 
 - [ ] Make available as NPM package.

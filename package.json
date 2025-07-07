@@ -1,8 +1,8 @@
 {
-  "name": "morgan-x-plugin",
-  "title": "Morgan X Plugin Development",
-  "description": "WordPress Plugin Development simplified with Morgan's plugins.build.js & plugins.config.js",
-  "version": "1.1.0",
+  "name": "morgan-wp-plugins",
+  "title": "Morgan's WP Plugins",
+  "description": "WordPress Plugin Development simplified with Morgan's wp-plugins.build.js & wp-plugins.config.js",
+  "version": "1.0.0",
   "license": "GPL-2.0",
   "type": "module",
   "author": "Morgan Hvidt <https://morganhvidt.com/>",
