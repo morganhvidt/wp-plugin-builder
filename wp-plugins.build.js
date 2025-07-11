@@ -1,6 +1,6 @@
 /**
  * Morgan's WordPress Plugin Build File.
- * @version 2.0.1
+ * @version 2.0.0
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -480,12 +480,7 @@ async function generateTranslations(plugin) {
 			"@wp-blocks/make-pot",
 			plugin.translation.source,
 			plugin.translation.destination,
-			plugin.translation.headers
-				? `--headers=${Object.entries(plugin.translation.headers)
-					.map(([key, value]) => `${key}:${value}`)
-					.join(",")}`
-				: null,
-			"--silent",
+			"--headers=email:example@example.com",
 			"--skip-audit",
 		].filter(Boolean); // Remove any nulls
 

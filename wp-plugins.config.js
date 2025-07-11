@@ -33,9 +33,6 @@ const WP_PLUGINS = [
 		translation: {
 			source: "./production/find-my-blocks", // Translate only built files.
 			destination: "./src/languages", // Output to the src folder for git access.
-			headers: {
-				email: "example@example.com",
-			},
 		},
 	},
 ];
