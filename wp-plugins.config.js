@@ -31,9 +31,11 @@ const WP_PLUGINS = [
 		],
 		minify: [], // Allows minifying files without building them as react.
 		translation: {
-			text_domain: "find-my-blocks",
-			input: "production/find-my-blocks", // Use a production build for creating translations.
-			output: "src/languages", // Output to the src folder for git access.
+			source: "./production/find-my-blocks", // Translate only built files.
+			destination: "./src/languages", // Output to the src folder for git access.
+			headers: {
+				email: "example@example.com",
+			},
 		},
 	},
 ];
